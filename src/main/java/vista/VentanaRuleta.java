@@ -29,8 +29,9 @@ public class VentanaRuleta {
         frame.add(btnNegro);
         frame.add(btnPar);
         frame.add(btnImpar);
-        frame.add(lblResultado);
         frame.add(txtApuesta);
+        frame.add(lblResultado);
+
 
         this.session = session;
 
