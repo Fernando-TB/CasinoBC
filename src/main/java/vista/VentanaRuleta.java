@@ -34,9 +34,9 @@ public class VentanaRuleta {
 
         this.session = session;
 
-        btnRojo.addActionListener(e -> jugarR() );
-        btnNegro.addActionListener(e -> jugarN() );
-        btnPar.addActionListener(e -> jugarP() );
+        btnRojo.addActionListener(e -> jugarR());
+        btnNegro.addActionListener(e -> jugarN());
+        btnPar.addActionListener(e -> jugarP());
         btnImpar.addActionListener(e -> jugarI());
     }
 
