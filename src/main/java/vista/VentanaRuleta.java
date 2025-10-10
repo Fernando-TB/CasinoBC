@@ -13,6 +13,7 @@ public class VentanaRuleta {
     JFrame frame = new JFrame();
     private SessionController session;
     JLabel lblResultado = new JLabel();
+    JTextField txtApuesta = new JTextField();
 
     public VentanaRuleta(SessionController session){
         frame.setSize(600, 400);
@@ -29,8 +30,8 @@ public class VentanaRuleta {
         frame.add(btnPar);
         frame.add(btnImpar);
         frame.add(lblResultado);
+        frame.add(txtApuesta);
 
-        Ruleta ruleta = new Ruleta();
         this.session = session;
 
         btnRojo.addActionListener(e -> jugarR() );
@@ -41,25 +42,29 @@ public class VentanaRuleta {
 
     public void jugarR(){
         Ruleta ruleta = new Ruleta();
-        String resultado = ruleta.jugar(session.getUsuario(),'R');
+        int apuesta = Integer.parseInt(txtApuesta.getText());
+        String resultado = ruleta.jugar(session.getUsuario(),'R',apuesta);
         lblResultado.setText(resultado + " saldo: " + session.getUsuario().getGananciaTotal());
     }
 
     public void jugarN(){
         Ruleta ruleta = new Ruleta();
-        String resultado = ruleta.jugar(session.getUsuario(),'N');
+        int apuesta = Integer.parseInt(txtApuesta.getText());
+        String resultado = ruleta.jugar(session.getUsuario(),'N',apuesta);
         lblResultado.setText(resultado + " saldo: " + session.getUsuario().getGananciaTotal());
     }
 
     public void jugarP(){
         Ruleta ruleta = new Ruleta();
-        String resultado = ruleta.jugar(session.getUsuario(),'P');
+        int apuesta = Integer.parseInt(txtApuesta.getText());
+        String resultado = ruleta.jugar(session.getUsuario(),'P',apuesta);
         lblResultado.setText(resultado + " saldo: " + session.getUsuario().getGananciaTotal());
     }
 
     public void jugarI(){
         Ruleta ruleta = new Ruleta();
-        String resultado = ruleta.jugar(session.getUsuario(),'I');
+        int apuesta = Integer.parseInt(txtApuesta.getText());
+        String resultado = ruleta.jugar(session.getUsuario(),'I',apuesta);
         lblResultado.setText(resultado + " saldo: " + session.getUsuario().getGananciaTotal());
     }
 

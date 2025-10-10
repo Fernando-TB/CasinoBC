@@ -31,10 +31,10 @@ public class Ruleta {
         return false;
     }
 
-    public String jugar(Usuario usuario,char tipo){
+    public String jugar(Usuario usuario,char tipo,int apuesta){
         int numero = girarRuleta();
         boolean resultado = evaluarResultado(numero,tipo);
-        this.registrarResultado(usuario,numero,5,resultado);
+        this.registrarResultado(usuario,numero,apuesta,resultado);
 
         if (resultado){
             return "acierto";
