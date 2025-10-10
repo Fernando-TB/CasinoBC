@@ -42,25 +42,25 @@ public class VentanaRuleta {
     public void jugarR(){
         Ruleta ruleta = new Ruleta();
         String resultado = ruleta.jugar(session.getUsuario(),'R');
-        lblResultado.setText(resultado);
+        lblResultado.setText(resultado + " saldo: " + session.getUsuario().getGananciaTotal());
     }
 
     public void jugarN(){
         Ruleta ruleta = new Ruleta();
         String resultado = ruleta.jugar(session.getUsuario(),'N');
-        lblResultado.setText(resultado);
+        lblResultado.setText(resultado + " saldo: " + session.getUsuario().getGananciaTotal());
     }
 
     public void jugarP(){
         Ruleta ruleta = new Ruleta();
         String resultado = ruleta.jugar(session.getUsuario(),'P');
-        lblResultado.setText(resultado);
+        lblResultado.setText(resultado + " saldo: " + session.getUsuario().getGananciaTotal());
     }
 
     public void jugarI(){
         Ruleta ruleta = new Ruleta();
         String resultado = ruleta.jugar(session.getUsuario(),'I');
-        lblResultado.setText(resultado);
+        lblResultado.setText(resultado + " saldo: " + session.getUsuario().getGananciaTotal());
     }
 
     public void mostrarRuleta(){
