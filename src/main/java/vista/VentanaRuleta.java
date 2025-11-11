@@ -31,7 +31,7 @@ public class VentanaRuleta {
         frame.add(btnImpar);
         frame.add(txtApuesta);
         frame.add(lblResultado);
-
+        lblResultado.setText(" saldo: " + session.getUsuario().getGananciaTotal());
 
         this.session = session;
 

@@ -24,7 +24,6 @@ public class VentanaLogin {
 
     public VentanaLogin() {
         frame.setSize(600, 400);
-        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setLayout(new GridLayout(5, 2, 10, 10));
         frame.add(lblUsuario);
         frame.add(txtUsuario);

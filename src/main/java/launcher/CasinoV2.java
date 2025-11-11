@@ -1,3 +1,5 @@
+package launcher;
+
 import vista.VentanaLogin;
 
 public class CasinoV2 {
