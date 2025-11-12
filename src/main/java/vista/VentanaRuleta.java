@@ -21,9 +21,9 @@ public class VentanaRuleta {
         JButton btnNegro = new JButton("Negro");
         JButton btnPar = new JButton("Par");
         JButton btnImpar = new JButton("Impar");
+        JButton btnVolver = new JButton("Volver");
 
-
-        frame.setLayout(new GridLayout(6, 1, 10, 10));
+        frame.setLayout(new GridLayout(7, 1, 10, 10));
 
         frame.add(btnRojo);
         frame.add(btnNegro);
@@ -32,6 +32,7 @@ public class VentanaRuleta {
         frame.add(txtApuesta);
         frame.add(lblResultado);
         lblResultado.setText(" saldo: " + session.getUsuario().getGananciaTotal());
+        frame.add(btnVolver);
 
         this.session = session;
 
@@ -39,6 +40,14 @@ public class VentanaRuleta {
         btnNegro.addActionListener(e -> jugarN());
         btnPar.addActionListener(e -> jugarP());
         btnImpar.addActionListener(e -> jugarI());
+        btnVolver.addActionListener(e -> volver());
+    }
+
+
+    public void volver(){
+        frame.setVisible(false);
+        VentanaMenu ventana = new VentanaMenu(this.session.getUsuario().getNombre(),this.session);
+        ventana.mostrarMenu();
     }
 
     public void jugarR(){

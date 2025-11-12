@@ -8,7 +8,6 @@ public class VentanaJuego {
     JFrame frame = new JFrame();
     private char tipo;
 
-
     public VentanaJuego(char tipo) {
         frame.setSize(600, 400);
         JLabel lblResultado = new JLabel();
@@ -16,7 +15,6 @@ public class VentanaJuego {
         frame.setLayout(new GridLayout(6, 1, 10, 10));
 
         this.tipo = tipo;
-
     }
 
 
