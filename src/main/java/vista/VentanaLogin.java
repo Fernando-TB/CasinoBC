@@ -23,6 +23,7 @@ public class VentanaLogin {
     private SessionController session;
 
     public VentanaLogin() {
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 400);
         frame.setLayout(new GridLayout(5, 2, 10, 10));
         frame.add(lblUsuario);

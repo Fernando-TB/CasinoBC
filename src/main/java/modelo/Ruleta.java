@@ -32,7 +32,7 @@ public class Ruleta {
     public String jugar(Usuario usuario,char tipo,int apuesta){
         int numero = girarRuleta();
         boolean resultado = evaluarResultado(numero,tipo);
-        this.registrarResultado(usuario,numero,apuesta,resultado);
+        this.registrarResultado(usuario,numero,apuesta,resultado,tipo);
 
         if (resultado){
             return "acierto";
@@ -41,19 +41,16 @@ public class Ruleta {
         }
     }
 
-    public void registrarResultado(Usuario usuario, int numero, int apuesta, boolean acierto) {
-        if (usuario.getHistorialSize() < MAX_HISTORIAL) {
-            int size = usuario.getHistorialSize();
-            usuario.getHistorialNumeros()[size] = numero;
-            usuario.getHistorialApuestas()[size] = apuesta;
-            usuario.getHistorialAciertos()[size] = acierto;
-            usuario.setHistorialSize(size + 1);
+    public void registrarResultado(Usuario usuario, int numero, int apuesta, boolean acierto,char tipo) {
 
             if (acierto) {
                 usuario.setGananciaTotal(usuario.getGananciaTotal() + (apuesta * 2));
+                Resultado result = new Resultado(Character.toString(tipo), true,apuesta,apuesta*2);
+                usuario.agregarResultado(result);
             } else {
                 usuario.setGananciaTotal(usuario.getGananciaTotal() - apuesta);
+                Resultado result = new Resultado(Character.toString(tipo), false,apuesta,-apuesta);
+                usuario.agregarResultado(result);
             }
         }
     }
-}

@@ -1,21 +1,19 @@
 package modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Usuario {
     private String username;
     private String password;
     private String nombre;
-    private final int MAX_HISTORIAL = 100;
-    private int[] historialNumeros = new int[MAX_HISTORIAL];
-    private int[] historialApuestas = new int[MAX_HISTORIAL];
-    private boolean[] historialAciertos = new boolean[MAX_HISTORIAL];
-    private int historialSize = 0;
     private int gananciaTotal;
+    private List<Resultado> resultados = new ArrayList<>();
 
     public Usuario(String username, String password, String nombre) {
         this.username = username;
         this.password = password;
         this.nombre = nombre;
-
     }
 
     // Verifica si las credenciales coinciden
@@ -26,23 +24,17 @@ public class Usuario {
     public String getNombre() {
         return this.nombre;
     }
-    public int[] getHistorialNumeros(){
-        return this.historialNumeros;
+
+    public void agregarResultado(Resultado resultado){
+        this.resultados.add(resultado);
     }
-    public int[] getHistorialApuestas(){
-        return this.historialApuestas;
+
+    public List<Resultado> getResultados() {
+        return this.resultados;
     }
-    public boolean[] getHistorialAciertos(){
-        return this.historialAciertos;
-    }
-    public int getHistorialSize(){
-        return this.historialSize;
-    }
+
     public int getGananciaTotal(){
         return this.gananciaTotal;
-    }
-    public void setHistorialSize(int size){
-        this.historialSize = size;
     }
     public void setGananciaTotal(int ganancia){
         this.gananciaTotal = ganancia;
