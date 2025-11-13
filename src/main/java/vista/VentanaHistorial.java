@@ -11,7 +11,6 @@ public class VentanaHistorial {
     private final JFrame frame = new JFrame("Menu - Black Cat");
     private SessionController session;
 
-
     public VentanaHistorial(SessionController session){
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 400);
@@ -25,7 +24,6 @@ public class VentanaHistorial {
         JPanel panel = resultados();
 
         JScrollPane scrlresultados = new JScrollPane(panel);
-
 
         frame.add(lblhistorial);
         frame.add(scrlresultados);

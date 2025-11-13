@@ -16,20 +16,22 @@ public class VentanaMenu {
         JLabel lblHola = new JLabel("Bienvenido " + usuario + ".");
         JButton btnRuleta = new JButton("Ruleta");
         JButton btnHistorial = new JButton("Historial");
+        JButton btnEstadisticas = new JButton("Estadisticas");
         JButton btnVolver = new JButton("Volver");
 
-        frame.setLayout(new GridLayout(4, 1, 10, 10));
+        frame.setLayout(new GridLayout(5, 1, 10, 10));
 
         this.session = session;
 
         frame.add(lblHola);
         frame.add(btnRuleta);
         frame.add(btnHistorial);
+        frame.add(btnEstadisticas);
         frame.add(btnVolver);
         btnRuleta.addActionListener(e ->jugarRuleta() );
         btnHistorial.addActionListener(e -> historial());
+        btnEstadisticas.addActionListener(e -> estadisticas());
         btnVolver.addActionListener(e -> volver());
-
 
     }
 
@@ -42,7 +44,6 @@ public class VentanaMenu {
         VentanaLogin ventana = new VentanaLogin();
         ventana.mostrarVentana();
     }
-
 
     public void historial(){
         if (session.getUsuario().getResultados() == null){
@@ -57,6 +58,22 @@ public class VentanaMenu {
             VentanaHistorial ventana = new VentanaHistorial(session);
             ventana.mostrarVentana();
         }
+    }
+
+    public void estadisticas(){
+
+        if (session.getUsuario().getVictorias() == 0){
+            JFrame error = new JFrame("Error");
+            JLabel err = new JLabel("Sin registro");
+            error.add(err);
+            error.setSize(600, 400);
+            error.setVisible(true);
+        }else {
+            frame.setVisible(false);
+            VentanaEstadisticas ruleta = new VentanaEstadisticas(session);
+            ruleta.mostrarVentana();
+        }
+
     }
 
     public void jugarRuleta(){

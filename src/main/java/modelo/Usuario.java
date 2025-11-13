@@ -9,6 +9,7 @@ public class Usuario {
     private String nombre;
     private int gananciaTotal;
     private List<Resultado> resultados = new ArrayList<>();
+    private int victorias = 0;
 
     public Usuario(String username, String password, String nombre) {
         this.username = username;
@@ -38,6 +39,15 @@ public class Usuario {
     }
     public void setGananciaTotal(int ganancia){
         this.gananciaTotal = ganancia;
+    }
+
+
+    public void addVictoria(){
+        this.victorias += 1;
+    }
+
+    public int getVictorias(){
+        return this.victorias;
     }
 
 }

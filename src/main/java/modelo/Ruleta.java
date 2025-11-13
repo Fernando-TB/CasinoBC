@@ -47,6 +47,7 @@ public class Ruleta {
                 usuario.setGananciaTotal(usuario.getGananciaTotal() + (apuesta * 2));
                 Resultado result = new Resultado(Character.toString(tipo), true,apuesta,apuesta*2);
                 usuario.agregarResultado(result);
+                usuario.addVictoria();
             } else {
                 usuario.setGananciaTotal(usuario.getGananciaTotal() - apuesta);
                 Resultado result = new Resultado(Character.toString(tipo), false,apuesta,-apuesta);
