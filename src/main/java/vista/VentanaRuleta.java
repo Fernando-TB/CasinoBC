@@ -1,8 +1,7 @@
 package vista;
 
 import controladores.SessionController;
-import modelo.Ruleta;
-import modelo.Usuario;
+import modelo.*;
 
 
 import javax.swing.*;
@@ -39,10 +38,15 @@ public class VentanaRuleta {
 
         this.session = session;
 
-        btnRojo.addActionListener(e -> jugarR());
-        btnNegro.addActionListener(e -> jugarN());
-        btnPar.addActionListener(e -> jugarP());
-        btnImpar.addActionListener(e -> jugarI());
+        ApuestaRojo r = new ApuestaRojo();
+        ApuestaNegro n = new ApuestaNegro();
+        ApuestaPar p = new ApuestaPar();
+        ApuestaImpar i = new ApuestaImpar();
+
+        btnRojo.addActionListener(e -> jugar(r));
+        btnNegro.addActionListener(e -> jugar(n));
+        btnPar.addActionListener(e -> jugar(p));
+        btnImpar.addActionListener(e -> jugar(i));
         btnVolver.addActionListener(e -> volver());
     }
 
@@ -53,37 +57,15 @@ public class VentanaRuleta {
         ventana.mostrarMenu();
     }
 
-    public void jugarR(){
+    public void jugar(ApuestaBase apuesta){
         Ruleta ruleta = new Ruleta();
-        int apuesta = Integer.parseInt(txtApuesta.getText());
-        String resultado = ruleta.jugar(session.getUsuario(),'R',apuesta);
+        int monto = Integer.parseInt(txtApuesta.getText());
+        apuesta.setMonto(monto);
+        String resultado = ruleta.jugar(session.getUsuario(),apuesta);
         lblResultado.setText(resultado);
         lblSaldo.setText("saldo: " + session.getUsuario().getGananciaTotal());
     }
 
-    public void jugarN(){
-        Ruleta ruleta = new Ruleta();
-        int apuesta = Integer.parseInt(txtApuesta.getText());
-        String resultado = ruleta.jugar(session.getUsuario(),'N',apuesta);
-        lblResultado.setText(resultado);
-        lblSaldo.setText("saldo: " + session.getUsuario().getGananciaTotal());
-    }
-
-    public void jugarP(){
-        Ruleta ruleta = new Ruleta();
-        int apuesta = Integer.parseInt(txtApuesta.getText());
-        String resultado = ruleta.jugar(session.getUsuario(),'P',apuesta);
-        lblResultado.setText(resultado);
-        lblSaldo.setText("saldo: " + session.getUsuario().getGananciaTotal());
-    }
-
-    public void jugarI(){
-        Ruleta ruleta = new Ruleta();
-        int apuesta = Integer.parseInt(txtApuesta.getText());
-        String resultado = ruleta.jugar(session.getUsuario(),'I',apuesta);
-        lblResultado.setText(resultado);
-        lblSaldo.setText("saldo: " + session.getUsuario().getGananciaTotal());
-    }
 
     public void mostrarRuleta(){
         frame.setVisible(true);
