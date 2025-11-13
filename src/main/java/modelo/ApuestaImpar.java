@@ -10,4 +10,8 @@ public class ApuestaImpar extends ApuestaBase {
     public boolean acierta(int numero, char color) {
         return numero % 2 == 1;
     }
+
+    public char getTipo(){
+        return 'I';
+    }
 }

@@ -12,27 +12,17 @@ public class Ruleta {
         return rng.nextInt(37);
     }
 
-    public static boolean evaluarResultado(int numero, char tipo) {
-        return switch (tipo) {
-            case 'R' -> esRojo(numero);
-            case 'N' -> !esRojo(numero);
-            case 'P' -> numero % 2 == 0;
-            case 'I' -> numero % 2 == 1;
-            default -> false;
-        };
-    }
-
-    private static boolean esRojo(int n) {
+    private static char esRojo(int n) {
         for (int rojo : numerosRojos) {
-            if (n == rojo) return true;
+            if (n == rojo) return 'R';
         }
-        return false;
+        return 'N';
     }
 
-    public String jugar(Usuario usuario,char tipo, ApuestaBase apuesta){
+    public String jugar(Usuario usuario, ApuestaBase apuesta){
         int numero = girarRuleta();
-        boolean resultado = apuesta.acierta(numero);
-        this.registrarResultado(usuario,numero,monto,resultado,tipo);
+        boolean resultado = apuesta.acierta(numero,esRojo(numero));
+        this.registrarResultado(usuario,numero,apuesta.getMonto(),resultado,apuesta.getTipo());
 
         if (resultado){
             return "acierto";

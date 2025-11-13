@@ -11,4 +11,8 @@ public class ApuestaRojo extends ApuestaBase{
     public boolean acierta(int numero, char color) {
         return color == 'R';
     }
+
+    public char getTipo(){
+        return 'R';
+    }
 }

@@ -17,4 +17,5 @@ public abstract class ApuestaBase {
     }
 
     public abstract boolean acierta(int numero, char color);
+    public abstract char getTipo();
 }
