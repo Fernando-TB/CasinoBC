@@ -1,6 +1,7 @@
 package vista;
 
 import controladores.SessionController;
+import modelo.ArchivoUsuarios;
 import modelo.Usuario;
 
 import javax.swing.*;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class VentanaLogin {
     // --- Lista dinámica de usuarios ---
-    private static final List<Usuario> USUARIOS = new ArrayList<>();
+    private static List<Usuario> USUARIOS;
     // --- UI ---
     private final JFrame frame = new JFrame("Login - Casino Black Cat");
     private final JLabel lblUsuario = new JLabel("Usuario:");
@@ -39,7 +40,8 @@ public class VentanaLogin {
         btnIngresar.addActionListener(e -> login());
         btnRegistrarse.addActionListener(e -> abrirRegistro());
 
-        USUARIOS.add(new Usuario("ftgrim","mish","Fernando"));
+        ArchivoUsuarios arch = new ArchivoUsuarios();
+        this.USUARIOS = arch.getUsuarios();
 
     }
 
@@ -52,6 +54,8 @@ public class VentanaLogin {
         String pass = new String(txtClave.getPassword());
 
         String nombre = validarCredenciales(user, pass);
+
+
 
         if (nombre != null){
             frame.setVisible(false);
@@ -70,6 +74,9 @@ public class VentanaLogin {
 
     private String validarCredenciales(String u, String p) {
 
+        ArchivoUsuarios arch = new ArchivoUsuarios();
+        this.USUARIOS = arch.getUsuarios();
+
         for (Usuario usuario : USUARIOS){
             if(usuario.validarCredenciales(u,p)){
                 return usuario.getNombre();
@@ -79,6 +86,9 @@ public class VentanaLogin {
     }
 
     private Usuario usuarioIniciado(String u, String p) {
+
+        ArchivoUsuarios arch = new ArchivoUsuarios();
+        this.USUARIOS = arch.getUsuarios();
 
         for (Usuario usuario : USUARIOS) {
             if (usuario.validarCredenciales(u, p)) {

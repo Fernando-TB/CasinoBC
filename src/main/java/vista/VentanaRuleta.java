@@ -64,6 +64,11 @@ public class VentanaRuleta {
         String resultado = ruleta.jugar(session.getUsuario(),apuesta);
         lblResultado.setText(resultado);
         lblSaldo.setText("saldo: " + session.getUsuario().getGananciaTotal());
+
+        ArchivoUsuarios arch = new ArchivoUsuarios();
+
+        arch.agregarUsuario(session.getUsuario());
+
     }
 
 

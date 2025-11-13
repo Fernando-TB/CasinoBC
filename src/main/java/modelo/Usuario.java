@@ -17,6 +17,12 @@ public class Usuario {
         this.nombre = nombre;
     }
 
+    public Usuario(String username, String password, String nombre,int victorias,int gananciaTotal, List<Resultado> resultados ) {
+        this.username = username;
+        this.password = password;
+        this.nombre = nombre;
+    }
+
     // Verifica si las credenciales coinciden
     public boolean validarCredenciales(String u, String p) {
         return this.username.equals(u) && this.password.equals(p);
@@ -50,5 +56,33 @@ public class Usuario {
         return this.victorias;
     }
 
+    public String toString() {
+        // Guardamos la lista de resultados como una cadena compacta
+        StringBuilder sb = new StringBuilder();
+        if (resultados != null && !resultados.isEmpty()) {
+            for (Resultado r : resultados) {
+                sb.append(r.toText()).append("|"); // separador entre resultados
+            }
+            sb.setLength(sb.length() - 1); // eliminar último "|"
+        } else {
+            sb.append("sin_resultados");
+        }
+
+        return username + ";" + password + ";" + nombre + ";" + victorias + ";" + gananciaTotal + ";" + sb;
+    }
+
+    public static Usuario desdeTexto(String linea) {
+        String[] partes = linea.split(";");
+        if (partes.length < 6) return null;
+
+        String username = partes[0];
+        String password = partes[1];
+        String nombre = partes[2];
+        int victorias = Integer.parseInt(partes[3]);
+        int gananciaTotal = Integer.parseInt(partes[4]);
+
+        List<Resultado> resultados = Resultado.desdeTextoLista(partes[5]);
+        return new Usuario(username, password, nombre, victorias, gananciaTotal, resultados);
+    }
 }
 

@@ -1,5 +1,9 @@
 package modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class Resultado {
     private String tipo;
     private boolean acierto;
@@ -29,4 +33,33 @@ public class Resultado {
     public String getGanancia(){
         return Integer.toString(this.ganancia);
     }
+
+    public String toText() {
+        // Separador interno: coma
+        return tipo + "," + acierto + "," + apuesta + "," + ganancia;
+    }
+
+    public static Resultado desdeTexto(String texto) {
+        String[] partes = texto.split(",");
+        if (partes.length != 4) return null;
+        return new Resultado(
+                partes[0],
+                Boolean.parseBoolean(partes[1]),
+                Integer.parseInt(partes[2]),
+                Integer.parseInt(partes[3])
+        );
+    }
+
+    public static List<Resultado> desdeTextoLista(String texto) {
+        List<Resultado> lista = new ArrayList<>();
+        if (texto.equals("sin_resultados")) return lista;
+
+        String[] items = texto.split("\\|");
+        for (String item : items) {
+            Resultado r = desdeTexto(item);
+            if (r != null) lista.add(r);
+        }
+        return lista;
+    }
+
 }
