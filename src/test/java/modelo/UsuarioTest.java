@@ -8,8 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UsuarioTest {
 
-    @BeforeEach
-
     @Test
     void validarCredenciales() {
 
